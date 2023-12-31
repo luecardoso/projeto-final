@@ -1,3 +1,6 @@
+using AgendamentoConsultaVeterinaria.Context;
+using Microsoft.EntityFrameworkCore;
+
 namespace AgendamentoConsultaVeterinaria
 {
     public class Program
@@ -8,7 +11,11 @@ namespace AgendamentoConsultaVeterinaria
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddDbContext<Contexto>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoBanco"));
+                //options.UseLazyLoadingProxies(true);
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
