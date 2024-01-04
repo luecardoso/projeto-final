@@ -1,5 +1,4 @@
-﻿using AgendamentoConsultaVeterinaria.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AgendamentoConsultaVeterinaria.Models
@@ -9,10 +8,10 @@ namespace AgendamentoConsultaVeterinaria.Models
         [Key]
         public int Id { get; set; }
 
-        public DateTime DataConsulta { get; set; }
-
-        public TimeSpan HoraConsulta { get; set; }
-        public StatusConsultaEnum StatusConsulta { get; set; }
+        [ForeignKey("DataHora")]
+        public int DataConsultaId { get; set; }
+        public DataHoraModel DataHora { get; set; }
+        public string? StatusConsulta { get; set; } = "Agendada";
 
         [ForeignKey("Unidade")]
         public int UnidadeId { get; set; }

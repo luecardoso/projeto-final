@@ -11,8 +11,7 @@ namespace AgendamentoConsultaVeterinaria.Models
         public string Email { get; set; }
         public string Senha { get; set; }
         public string Crmv { get; set; }
-        //public List<TipoAnimalEnum> PetsQueAceita { get; set; }
-        public string Descricao { get; set; }
+        public string? Descricao { get; set; }
         [ForeignKey("Unidade")]
         public int UnidadeId { get; set; }
         public UnidadeModel Unidade { get; set; }

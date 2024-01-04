@@ -55,7 +55,10 @@ namespace AgendamentoConsultaVeterinaria.Context
                 .WithMany(a => a.Consultas)
                 .HasForeignKey(c => c.UnidadeId)
                 .OnDelete(DeleteBehavior.NoAction);
-
+            modelBuilder.Entity<HoraAtivaModel>()
+           .HasOne(h => h.DataHora)
+           .WithMany(d => d.HorasAtivas)
+           .HasForeignKey(h => h.DataHoraId);
             base.OnModelCreating(modelBuilder);
         }
     }
