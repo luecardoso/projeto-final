@@ -11,7 +11,8 @@ namespace AgendamentoConsultaVeterinaria.Context
         public DbSet<EnderecoModel> Endereco { get; set; }
         public DbSet<MedicoModel> Medico { get; set; }
         public DbSet<UnidadeModel> Unidade { get; set; }
-
+        public DbSet<DataHoraModel> DataHora { get; set; }
+        public DbSet<HoraAtivaModel> Hora { get; set; }
         public Contexto(DbContextOptions<Contexto> options) : base(options)
         {
 
@@ -55,10 +56,11 @@ namespace AgendamentoConsultaVeterinaria.Context
                 .WithMany(a => a.Consultas)
                 .HasForeignKey(c => c.UnidadeId)
                 .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<HoraAtivaModel>()
-           .HasOne(h => h.DataHora)
-           .WithMany(d => d.HorasAtivas)
-           .HasForeignKey(h => h.DataHoraId);
+               .HasOne(h => h.DataHora)
+               .WithMany(d => d.HorasAtivas)
+               .HasForeignKey(h => h.DataHoraId);
             base.OnModelCreating(modelBuilder);
         }
     }
